@@ -8,6 +8,7 @@ use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7;
+use GuzzleHttp\Psr7\Utils;
 use Kapersoft\Sharefile\Exceptions\BadRequest;
 
 /**
@@ -472,7 +473,7 @@ class Client
                 'index'      => $index,
                 'byteOffset' => $index * $chunkSize,
                 'hash'       => md5($data),
-                'filehash'   => Psr7\hash(Psr7\stream_for($stream), 'md5'),
+                'filehash'   => Utils::hash(Psr7\stream_for($stream), 'md5'),
                 'finish'     => true,
             ]
         );
