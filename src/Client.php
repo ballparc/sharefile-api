@@ -473,7 +473,7 @@ class Client
                 'index'      => $index,
                 'byteOffset' => $index * $chunkSize,
                 'hash'       => md5($data),
-                'filehash'   => Utils::hash(Psr7\stream_for($stream), 'md5'),
+                'filehash'   => Utils::hash(Utils::streamFor($stream), 'md5'),
                 'finish'     => true,
             ]
         );
